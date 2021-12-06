@@ -100,9 +100,10 @@ Laravel is a PHP framework. It is developed by Taylor Otwell. The first release 
 	];
 
      
-## Using the below example to show the old input data after submitting the form,
-  
-   o vale = "{{old('name')}}"
+## Blade form old value
+    - Using the below example to show the old input data after submitting the form,
+      
+       o vale = "{{old('name')}}"
    
    
 ## Password confirmation validation,

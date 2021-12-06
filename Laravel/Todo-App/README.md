@@ -1,66 +1,79 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## What is Laravel?
 
-## About Laravel
+Laravel is a PHP framework. It is developed by Taylor Otwell. The first release is in June 2011. It is very fast. And it is an open source. And it is easy to use.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Composer :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- The composer is a  dependency manager. It is used to manage the dependencies. We can find out the details of installed dependencies in the composer.json file.
+- And in composer.lock file we can see the dependency names with descriptions of the particular dependency. The installed dependencies are available in the vendor folder.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Jetstream :
 
-## Learning Laravel
+- Jetstream is used for login, registration, email verification, two-factor authentication, session management. Install this dependency, we can use the below command,
+    o - composer require laravel/jetstream
+- And we can use the liveware,
+	
+		o php artisan jetstream:install livewire
+		
+ - And finally need to install the npm and migrate,
+	
+		o npm install
+		o npm run dev
+		o php artisan migrate
+ 
+ ## Route :
+ 
+    - The most basic Laravel routes accept a URI and a closure. Here we can use get, post and view.
+   	
+   	- "Route::view" will display the static content. And we can also pass the data through a route using a compact, array, and with. Also, we can use the request to show the data.
+   	
+   	- In route, we can use the middleware for logged-in users to visit the page.
+    
+ ## Controller :
+ 
+     - We can create the controller using the below command,
+	
+		> php artisan make:controller ControllerName
+	
+	 - The controller is the mediator between model and view.
+     
+ ## CSRF :
+ 
+    - CSRF means Cross-site Request Forgery.
+	
+	- CSRF token is used for secure form submission. 
+	
+	- CSRF will generate the token automatically in the form to protect the data submission. 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+	- We can use the below code to implement the csrf in form,
+	
+		o csrf;
+		
+	- Without csrf token, the page will display the error as "Page is expired".
+    
+    
+ ## Blade template engine :
+ 
+     - We can display the data using the {{}}. Use "blade.php" to save the blade file. 
+	
+	- In blade file, We need to add the @ symbol before the conditional statments and loops,
+	
+	    > @if @endif, @switch, @for, @endfor, @forelse, @foreach
+	    > @unless, @empty, @isset, @auth
+	
+	- We can also use the following php tags in blade file,
+	
+		> @php echo "print"; @endphp
+        
+ 
+ ## validation :
+ 
+    Using the validate array to validate the request data in laraval. 
+	
+	Syntax,
+	
+		$request->validate([
+			'name' => 'required',
+		]);

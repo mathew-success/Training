@@ -77,3 +77,101 @@ Laravel is a PHP framework. It is developed by Taylor Otwell. The first release 
 		$request->validate([
 			'name' => 'required',
 		]);
+
+## errors :
+
+	- We can display the validation errors in the blade file.
+	
+	<div class="alert alret-warning">
+		@if($errors->any())
+			@foreach($errors->all() as $error)
+				{{ $error }}
+			@endforeach
+		@endif
+	</div>
+	
+    
+## Validation custom error messages :
+    	
+    	- Using the below example to display the custom validation errors in the blade file,
+    	
+	$messages = [
+		'name.required' => 'custom reuired name mesg'
+	];
+
+     
+## Using the below example to show the old input data after submitting the form,
+  
+   o vale = "{{old('name')}}"
+   
+   
+## Password confirmation validation,
+
+	- In the new user create the page, using the below method to validate the confirmed password
+	
+	In form,
+	
+		<input type="password" name="password">
+		<input type="password" name="password_confirmation">
+	
+	In Validation,
+	
+		$request->validate([
+			'password' => 'required|confirm',
+		]);
+   
+   
+ 
+## database configuration :
+
+	- config/database.php file is having the actual database details from the environment file. Here we can also add the multiple database connections. 
+   
+   
+## Migration :
+
+	a. Create the table using the below migration command,
+	
+		> php artisan make:migration create_table_names_table
+		
+		> We have to create the table in the plural. 
+	
+	b. We can also add the new columns in the existing table and also edit the existing columns using the change() method.
+	
+		> ex : $table->string('name')->nullable()->change();
+		
+	c. Schema::create
+	
+		> We can use the above syntax to create the new table.
+	
+	d. Schema::table
+	
+		> We can use the above syntax to edit or add new columns in the existing table.
+ 
+ ## ORM :
+ 
+ 	a. Model,
+ 	
+ 		> We have to create the model in singular form and create the table as the plural form.
+ 	
+ 		> Create the model using the below command,
+ 		
+ 			o php artisan make:model ModelName
+ 	
+ 		> Model represents the table name. We can access the table using the model.
+ 		
+ 		> Fillable and guarded
+ 		
+ 			o Using the Fillable to mention the column names and the mentioned columns will be used for store records.
+ 			
+ 			o Using guarded to mention the field name and that field will not accept/store the input data. 
+ 			
+ 			
+        b. Store data,
+        
+        	> We have three methods to store the data.
+        	
+        		1. Object oriented method - $user = new ModelName;
+        		
+        		2. Create - ModelName::create(['data'=>'value']);
+        		
+        		3. Insert - We can store the array data in one time. Ex : ModelName::insert(Array1,Array2); 

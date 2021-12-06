@@ -12,7 +12,9 @@ Laravel is a PHP framework. It is developed by Taylor Otwell. The first release 
 ## Jetstream :
 
 - Jetstream is used for login, registration, email verification, two-factor authentication, session management. Install this dependency, we can use the below command,
-    o - composer require laravel/jetstream
+     
+     o composer require laravel/jetstream
+     
 - And we can use the liveware,
 	
 		o php artisan jetstream:install livewire

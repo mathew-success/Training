@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
+    Route::get('/', [BlogTechnologyController::class, 'allposts'])->name('front.allposts');
+    Route::get('/front/{id}', [BlogTechnologyController::class, 'show'])->name('front.show');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

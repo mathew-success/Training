@@ -20,6 +20,12 @@ class BlogTechnologyController extends Controller
         return view('techBlogs/index', compact('blogs'))->with(['no'=>1]);
     }
 
+    public function allposts()
+    {
+        $blogs = BlogTechnology::with(['blogs','technology'])->get();
+        return view('front/home', compact('blogs'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +73,8 @@ class BlogTechnologyController extends Controller
      */
     public function show($id)
     {
-        //
+        $blog = BlogTechnology::with(['blogs','technology'])->where('id',$id)->first();
+        return view('front/view_post', compact('blog'));
     }
 
     /**

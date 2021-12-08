@@ -1,0 +1,18 @@
+.form-control {
+    border: 1px solid #000000;
+    border-radius: 3px !important;
+    font-size: 16px !important;
+}
+.job_card {
+    text-align: left;
+    border: 2px solid #ececec;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 0% 2%;
+}
+.job_card h5 {
+    margin-top: 10px;
+}
+.ln_h25{
+    line-height: 25px;
+}

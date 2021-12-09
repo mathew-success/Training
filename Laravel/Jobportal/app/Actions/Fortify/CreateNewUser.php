@@ -30,7 +30,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return User::create([
-            'user_id' => "US".rand(10000,100000),
+            'user_id' => $this->checkUniqueUser(),
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
@@ -42,5 +42,16 @@ class CreateNewUser implements CreatesNewUsers
             'registration_date' => Carbon::now()->toDateString(),
             'registration_time' => Carbon::now()->toTimeString(),
         ]);
+    }
+
+    public function checkUniqueUser(){
+
+        $userId = "US".rand(10000,100000);
+        $user = User::where('user_id', $userId)->exists();
+        if(!$user){
+            return $userId;
+        }else{
+            $this->checkUniqueUser();
+        }
     }
 }

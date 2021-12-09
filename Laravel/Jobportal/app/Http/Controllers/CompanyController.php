@@ -17,7 +17,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = CompanyEmployer::with(['company','employer'])->get();
+        $companies = CompanyEmployer::with(['company','employer'])->orderBy('id', 'DESC')->get();
         return view('company/index', compact('companies'))->with(['no'=>1]);
     }
 

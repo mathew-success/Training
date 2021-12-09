@@ -29,6 +29,7 @@
 					<tbody>
 						@if($jobs)
 							@foreach($jobs as $job)
+							@if($usersCompany === $job->job->company->id)
 							<tr>
 								<td>{{$no++}}</td>
 								<td>{{$job->job->title}}</td>
@@ -39,9 +40,10 @@
 								<td>{{$job->user->email}}</td>
 								<td>{{$job->user->phone_no}}</td>
 								<td>
-									<a href="#" class="btn btn-sm btn-primary">know more</a>
+									<a href="{{ route('job.usersinfo',$job->user->id) }}" class="btn btn-sm btn-primary">know more</a>
 								</td>
 							</tr>
+							@endif
 							@endforeach
 						@endif
 					</tbody>

@@ -15,4 +15,8 @@ class Company extends Model
         'website',
         'status',
     ];
+
+    public function employer(){
+        return $this->hasOne(CompanyEmployer::class,'user_id','id');
+    }
 }

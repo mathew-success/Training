@@ -44,12 +44,13 @@ Route::middleware(['auth:sanctum','employerrole'])->group(function(){
     Route::get('job', [JobController::class, 'create'])->name('job.create');
     Route::post('job', [JobController::class, 'store'])->name('job.store');
     Route::get('job/{id}', [JobController::class, 'destroy'])->name('job.destroy');
-    Route::get('job_users', [JobController::class, 'appliedusers'])->name('job.users');
+    Route::get('job-users', [JobController::class, 'appliedusers'])->name('job.users');
+    Route::get('job-users-info/{id}', [JobController::class, 'applied_user_info'])->name('job.usersinfo');
 });
 
 Route::middleware(['auth:sanctum','userrole'])->group(function(){
-    Route::get('jobs_list', [UserController::class, 'jobs'])->name('user.jobs');
-    Route::get('apply_jobs/{id}', [JobApplyController::class, 'show'])->name('user.apply'); 
+    Route::get('jobs-list', [UserController::class, 'jobs'])->name('user.jobs');
+    Route::get('apply-jobs/{id}', [JobApplyController::class, 'show'])->name('user.apply'); 
     Route::post('apply', [JobApplyController::class, 'store'])->name('userjob.store');
     Route::get('appliedjobs', [JobApplyController::class, 'appliedjobs'])->name('user.appliedjobs');
 });

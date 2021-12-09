@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\CompanyEmployer;
 use App\Models\Job;
 use App\Models\JobApply;
 use App\Models\JobQualification;
 use App\Models\JobSkill;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -19,14 +21,25 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with(['skill','qualification','company'])->get();
+        $userId = auth()->user()->id;
+        $employer = CompanyEmployer::where('user_id',$userId)->first();
+        $jobs = Job::where('company_id', $employer->company_id)->with(['skill','qualification','company'])->orderBy('id', 'DESC')->get(); 
         return view('job/index', compact('jobs'))->with(['no'=>1]);
     }
 
     public function appliedusers()
     {
-        $jobs = JobApply::with(['job'])->get();
-        return view('job/applied_users', compact('jobs'))->with(['no'=>1]);
+        $userId = auth()->user()->id;
+        $employer = CompanyEmployer::where('user_id',$userId)->first(); 
+        $usersCompany = $employer->company_id;
+        $jobs = JobApply::with(['job'])->orderBy('id', 'DESC')->get(); 
+        return view('job/applied_users', compact('jobs','usersCompany'))->with(['no'=>1]);
+    }
+
+    public function applied_user_info($id)
+    {
+        $job = JobApply::where('user_id',$id)->with(['job','user'])->first();
+        return view('job/applied_user_details', compact('job'));
     }
 
     /**
@@ -36,8 +49,12 @@ class JobController extends Controller
      */
     public function create()
     {
+        $userId = auth()->user()->id;
+        $employer = Company::with('employer')->get()->toArray(); 
+        $user = User::where('id',$userId)->with('employer')->first();
+        $user_company = $user->employer->company_id; 
         $skills = JobSkill::all();
-        $companies = Company::all();
+        $companies = Company::where('id',$user_company)->get();
         return view('job/create', compact('companies','skills'));
     }
 

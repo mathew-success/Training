@@ -28,7 +28,7 @@
     <div class="sidebar" data-color="orange"><!--Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"-->
   <link href="{{asset('css/selection/select2.min.css')}}" rel="stylesheet" />
       <div class="logo text-center">
-        <a href="{{ route('dashboard') }}" class="simple-text logo-normal">
+        <a href="javascript:void(0);" class="simple-text logo-normal">
           Jobportal
         </a>
       </div>

@@ -48,7 +48,7 @@ Route::middleware(['auth:sanctum','employerrole'])->group(function(){
     Route::get('job-users-info/{id}', [JobController::class, 'applied_user_info'])->name('job.usersinfo');
 });
 
-Route::middleware(['auth:sanctum','userrole'])->group(function(){
+Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('jobs-list', [UserController::class, 'jobs'])->name('user.jobs');
     Route::get('apply-jobs/{id}', [JobApplyController::class, 'show'])->name('user.apply'); 
     Route::post('apply', [JobApplyController::class, 'store'])->name('userjob.store');

@@ -46,8 +46,8 @@
 						<div class="col-sm-4">
 							<label>Job : </label>
 							<select name="job_id" class="form-control">
+								<option value="">Select--</option>
 								@foreach($jobs as $job)
-									<option value="">Select--</option>
 									<option value="{{ $job->id }}">{{ $job->title }}</option>
 								@endforeach
 							</select>
@@ -77,8 +77,8 @@
 						<div class="col-sm-6">
 							<label>Country : </label>
 							<select name="country_id" class="form-control">
+								<option value="">Select--</option>
 								@foreach($countries as $country)
-									<option value="">Select--</option>
 									<option value="{{ $country->id }}">{{ $country->name }}</option>
 								@endforeach
 							</select>

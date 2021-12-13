@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-sm-6">
                         <ul>
                             <li><a href="{{route('blog.create')}}" class="btn btn-primary btn-block">Create Blog</a></li>
@@ -36,7 +36,17 @@
                             <li><a href="{{route('job_enquiry.create')}}" class="btn btn-primary btn-block">Job Enquiry</a></li>
                         </ul>
                     </div>
+                </div>-->
+                <br/>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul>
+                            <li><a href="{{route('user.create')}}" class="btn btn-primary btn-block">Create Users</a></li>
+                            <br/>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

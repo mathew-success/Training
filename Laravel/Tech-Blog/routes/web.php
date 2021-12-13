@@ -7,6 +7,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobEnquiryController;
 use App\Http\Controllers\JobTechnologyController;
 use App\Http\Controllers\TechnologyController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     Route::get('/', [BlogTechnologyController::class, 'allposts'])->name('front.allposts');
     Route::get('/front/{id}', [BlogTechnologyController::class, 'show'])->name('front.show');
+    Route::get('/job_apply', [JobEnquiryController::class, 'applyjob'])->name('job.apply');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -76,4 +78,9 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     Route::get('job_enquiry', [JobEnquiryController::class, 'create'])->name('job_enquiry.create');
     Route::post('job_enquiry', [JobEnquiryController::class, 'store'])->name('job_enquiry.store');
     Route::get('job_enquiry/{id}', [JobEnquiryController::class, 'destroy'])->name('job_enquiry.destroy');
+});
+
+Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
+    Route::get('/user', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user', [UserController::class, 'store'])->name('user.store');
 });

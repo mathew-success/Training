@@ -113,7 +113,7 @@
 							<select class="form-control skills" name="skills[]" multiple="multiple">
 								<option value="">Select--</option>
 								@foreach($skills as $skill)
-								<option value="{{ $skill->id }}">{{ $skill->skills }}</option>
+								<option value="{{ $skill->skills }}">{{ $skill->skills }}</option>
 								@endforeach
 							</select>
 							<br/>

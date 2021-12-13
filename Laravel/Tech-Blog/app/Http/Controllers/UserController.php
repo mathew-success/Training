@@ -91,8 +91,6 @@ class UserController extends Controller
 
         $existingMails = implode(', ',$existingEmails);
 
-        //dd(['Existing Users'],$existingUsers, ['Existing Emails'],$existingMails, ['New Users'],$newUserDetails);
-
         return view('users/view', compact('existingMails','existingUsers','newUserDetails'));
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -100,10 +101,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        
-        if($user->delete()){
-            return redirect()->back()->with(['message' => 'User Deleted']);
+        if(Gate::allows('isSuperAdmin')) {
+            
+            $user = User::find($id);
+
+            if($user->delete()){
+                return redirect()->back()->with(['message' => 'User Deleted']);
+            }
+        }else {
+    
+            return redirect()->back()->with(['message' => "You don't have permission to delete a user"]);
         }
     }
 }

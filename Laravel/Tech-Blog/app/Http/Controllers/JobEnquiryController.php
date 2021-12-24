@@ -32,6 +32,13 @@ class JobEnquiryController extends Controller
         return view('enquiry/create', compact('jobs','countries'));
     }
 
+    public function applyjob()
+    {
+        $jobs = Job::all();
+        $countries = Country::all();
+        return view('front/apply_job', compact('jobs','countries'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *

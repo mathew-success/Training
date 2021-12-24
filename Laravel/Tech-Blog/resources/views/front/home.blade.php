@@ -36,6 +36,9 @@
 						<a href="{{ url('/') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
 					</li>
 					<li>
+						<a href="{{ url('/job_apply') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Apply Job</a>
+					</li>
+					<li>
 						<a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
 					</li>
 					@else
@@ -64,8 +67,8 @@
 			@if($blogs)
 			<div class="row">
 				@foreach($blogs as $blog)
-				<a href="{{ route('front.show',$blog->id) }}">
-					<div class="col-sm-4 card">
+				<div class="col-sm-3 card">
+					<a href="{{ route('front.show',$blog->id) }}">
 						<div class="" style="border: 1px solid black;padding: 4px;">
 							<img class="card-img-top" src="images/blog/{{$blog->blogs->image}}" style="width: 100%;" alt="Card image">
 							<hr/>
@@ -76,8 +79,8 @@
 								<p>{{$blog->technology->name}}</p>
 							</div>
 						</div>
-					</div>
-				</a>
+					</a>
+				</div>
 				@endforeach
 			</div>
 			@endif

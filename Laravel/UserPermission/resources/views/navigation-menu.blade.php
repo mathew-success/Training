@@ -19,6 +19,10 @@
                     <x-jet-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                         {{ __('Admin') }}
                     </x-jet-nav-link>
+                
+                    <x-jet-nav-link href="{{ route('user.logout') }}" :active="request()->routeIs('user.logout')">
+                        {{ __('Custom Logout') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

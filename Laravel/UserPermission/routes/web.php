@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssignPermissionController;
 use App\Http\Controllers\AssignRoleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/user-login',[LoginController::class,'login'])->name('user.login');
+Route::post('/user-login',[LoginController::class,'authenticate'])->name('user.authenticate');
+Route::get('/user-logout',[LoginController::class,'logout'])->name('user.logout');
+
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard',[HomeController::class,'index'])->name('dashboard');
-    Route::get('/admin',[HomeController::class,'admin'])->name('admin');
+    Route::get('/admin',[HomeController::class,'admin'])->name('admin')->middleware('can:page,App\Models\User');;
 });
 
 Route::middleware('auth')->name('role.')->group(function(){

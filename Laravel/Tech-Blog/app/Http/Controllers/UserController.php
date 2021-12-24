@@ -69,23 +69,14 @@ class UserController extends Controller
 
         $newUserDetails = $filtered->all();
 
-
         $existingUsers = [];
         $newUsers = [];
         $existingEmails = [];
-
 
         foreach($users as $key=>$user){
             if(isset($dbUsers[$key]['email']) && !empty($dbUsers[$key]['email'])){
                 $existingUsers[$key] = ['name' => $dbUsers[$key]['name'], 'email' => $dbUsers[$key]['email']];
                 $existingEmails[$key] = $dbUsers[$key]['email'];
-
-                if(!in_array($dbUsers[$key]['email'],$users)){
-                    $newUsers[$key] = [
-                        'name' => $user['name'],
-                        'email' => $user['email']
-                    ];
-                }
             }
         }
 

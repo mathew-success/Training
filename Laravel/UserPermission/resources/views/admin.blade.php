@@ -11,6 +11,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-md-5">
                 <h3 class="text-center">Welcome to user management</h3>
                 <br/><br/>
+                @can('isSuperAdmin')
                 <div class="row">
                     <div class="col-sm-4">
                         <a href="{{ route('user.create') }}" class="btn btn-block btn-info">Create Users</a>
@@ -36,6 +37,18 @@
                         <a href="{{ route('assign-permission.index') }}" class="btn btn-block btn-info">Assigned Permission List</a>
                     </div>
                 </div>
+                @endcan
+                
+                @can('isAdmin')
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="{{ route('user.create') }}" class="btn btn-block btn-info">Create Users</a>
+                        <br/>
+                        <a href="{{ route('user.index') }}" class="btn btn-block btn-info">Users List</a>
+                        <br/>
+                    </div>
+                </div>
+                @endcan
             </div>
         </div>
     </div>

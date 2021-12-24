@@ -39,6 +39,9 @@
 						<a href="{{ url('/') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
 					</li>
 					<li>
+						<a href="{{ url('/job_apply') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Apply Job</a>
+					</li>
+					<li>
 						<a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
 					</li>
 					@else
@@ -64,17 +67,24 @@
 			</div>
 			<br/><br/>
 			<div class="row">
-				<div class="col-sm-6 text-left">
+				<div class="col-sm-6 text-left" style="border-right: 1px dashed #333;">
 					<img src="{{asset('/images/blog/' . $blog->blogs->image)}}" style="width: 70%;" alt="Blog image" />
 					<h3>{{$blog->blogs->title}}</h3>
-					<p>{{ $blog->blogs->description }}</p>
+					<p class="text-justify">{{ $blog->blogs->description }}</p>
 				</div>
 				<div class="col-sm-6 text-left">
 				<img src="{{asset('/images/technology/' . $blog->technology->image)}}" style="width: 70%;" alt="Tech image" />
 					<h3>{{$blog->technology->name}}</h3>
-					<p>{{ $blog->technology->description }}</p>
+					<p class="text-justify">{{ $blog->technology->description }}</p>
 				</div>
 			</div>
+			<br/><br/>
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<a href="{{route('job.apply')}}" class="btn btn-info">Apply Now</a>
+				</div>
+			</div>
+			<br/><br/>
 		</div>
     </body>
 </html>

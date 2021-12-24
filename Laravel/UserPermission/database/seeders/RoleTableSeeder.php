@@ -18,6 +18,10 @@ class RoleTableSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'Super Admin'
+            ],
+            [
+                'id' => 2,
+                'name' => 'Admin'
             ]
         ];
 

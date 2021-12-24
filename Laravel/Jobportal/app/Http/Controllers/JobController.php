@@ -107,12 +107,16 @@ class JobController extends Controller
         $job->posted_by = auth()->user()->id;
         $job->posted_date = Carbon::now()->toDateString();
         $job->save();
-        $skillsArr = $request->skills;
+        $skillsArr = $request->skills; 
+        $existingSkills = JobSkill::whereIn('skills',$skillsArr)->get()->toArray();
+        
         foreach($skillsArr as $skilldata){
-            $skill = new JobSkill();
-            $skill->job_id = $job->id;
-            $skill->skills = $skilldata;
-            $skill->save();
+            if(!in_array($skilldata, $existingSkills)){
+                $skill = new JobSkill();
+                $skill->job_id = $job->id;
+                $skill->skills = $skilldata;
+                $skill->save();
+            }
         }
 
         $qualification = new JobQualification();
